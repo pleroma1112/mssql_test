@@ -23,7 +23,7 @@ const mssqlTest = ()=>{
         let startTime = new Date('2022-02-01 00:00:00').toISOString()
         let endTime = new Date('2022-02-02 00:00:00').toISOString()
         pool.then(pool=>{
-            let sqlQuery = `select tagName,timestamp,value from ctc_fn_PARCdata_ReadInterpolatedTags(${'I.G1.300:FC015.PV'},'${startTime}','${endTime}','TIMEAVERAGE','900',',')`
+            let sqlQuery = `select tagName,timestamp,value from ctc_fn_PARCdata_ReadInterpolatedTags('I.G1.300:FC015.PV','${startTime}','${endTime}','TIMEAVERAGE','900',',')`
             pool.request().query(sqlQuery).then(result=>resolve(result.recordset))
         }).catch(err=>{
             if(err) throw err
